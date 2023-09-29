@@ -6,14 +6,14 @@
 
 ; Variables
 	.rsset $0000
-ballx			.rs 1
-bally			.rs 1
-ballup		.rs 1
-balldown	.rs 1
-ballleft	.rs 1
-ballright	.rs 1
-smo			  .rs 1
-con1		  .rs 1
+ballx				.rs 1
+bally				.rs 1
+ballup			.rs 1
+balldown		.rs 1
+ballleft		.rs 1
+ballright		.rs 1
+smo					.rs 1
+con1				.rs 1
 
 
 ; Constants
@@ -141,7 +141,6 @@ read_controller_1_loop:
 	ROL con1
 	DEX
 	BNE read_controller_1_loop
-
 	RTS
 
 
@@ -217,8 +216,7 @@ move_ball_down:
 	STA balldown
 	LDA #$01
 	STA ballup
-move_ball_down_done
-	
+move_ball_down_done:
 	RTS
 
 
@@ -270,7 +268,6 @@ place_sprite_down_done:
 	TAX
 	CPX #$10
 	BNE update_sprites_loop
-
 	RTS
 
 
