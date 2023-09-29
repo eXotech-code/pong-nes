@@ -298,8 +298,16 @@ move_paddles_start:
 move_paddles_loop:
 	LDA PADDLEL, x
 	CPY #$01
-	BNE inc_paddle
 	BEQ dec_paddle
+
+inc_paddle:
+	CLC
+	ADC #SPEEDP
+	JMP paddle_modify_done
+
+dec_paddle:
+	SEC
+	SBC #SPEEDP
 
 paddle_modify_done:
 	STA PADDLEL, x
@@ -310,16 +318,6 @@ paddle_modify_done:
 	CPX #$00
 	BNE move_paddles_loop
 	RTS
-
-inc_paddle:
-	CLC
-	ADC #SPEEDP
-	JMP paddle_modify_done
-
-dec_paddle:
-	SEC
-	SBC #SPEEDP
-	JMP paddle_modify_done
 
 
 PpuCleanup:
